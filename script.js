@@ -1,5 +1,3 @@
-const { use } = require("react");
-
 const form = document.getElementById("registration-form");
 const username = document.getElementById("username");
 const email = document.getElementById("email");
@@ -18,8 +16,52 @@ form.addEventListener("submit", function(e) {
         const isEmailValid = checkEmail(email);
         const isPasswordValid = checkLength(password, 6, 25);
         const isPasswordMatch = checkPasswordMatch(password, confirmPassword);
+
+        isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isPasswordMatch;
+    }
+
+    if(isFormValid) {
+        alert("Registration successful!");
+        form.reset();
+        document.querySelectorAll(".form-group").forEach(formGroup => {
+            formGroup.className = "form-group";
+        });
     }
 });
+
+function checkLength(input, min, max) {
+    if(input.value.length < min) {
+        showError(input, `${formatFieldName(input)} must be at least ${min} characters`);
+        return false;
+    } else if(input.value.length > max) {
+        showError(input, `${formatFieldName(input)} must be less than ${max} characters`);
+        return false;
+    } else {
+        showSuccess(input);
+        return true;
+    }
+}
+
+function checkEmail(email) {
+    //Email regex that covers most common email formats.
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(emailRegex.test(email.value.trim())) {
+        showSuccess(email);
+        return true;
+    } else {
+        showError(email, "Email is not valid");
+        return false;
+    }
+}
+
+function checkPasswordMatch(input1, input2) {
+    if(input1.value !== input2.value) {
+        showError(input2, "Passwords do not match.");
+        return false;
+    }
+    return true;
+}
 
 function checkRequired(inputArray) {
     let isValid = true;
