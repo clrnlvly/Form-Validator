@@ -1,10 +1,11 @@
 # ✅ Form Validator
 
-A simple and stylish web form with client-side validation using **HTML**, **CSS**, and **JavaScript**.
+A simple web form with client-side validation using **HTML**, **CSS**, and **JavaScript**.
 
 ## 🔗 Live Demo  
 [🔗 View on GitHub Pages](https://clrnlvly.github.io/Form-Validator/)
 
+## Youtube: https://youtu.be/ATGzH4TrwL8
 ---
 
 ## ✨ Features
@@ -12,7 +13,6 @@ A simple and stylish web form with client-side validation using **HTML**, **CSS*
 - 🛡️ Validates name, email, and password fields
 - ⚠️ Displays real-time error messages
 - 🎯 Basic password strength check
-- 📱 Responsive design
 
 ---
 
